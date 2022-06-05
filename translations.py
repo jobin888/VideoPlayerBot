@@ -7,8 +7,8 @@ HELP_TEXT = f"""
 🛠-- **Setting Up Bot**:--
 
 \u2022 **Start Voice Chat In Your Group!**
-\u2022 Add Me ({@USERNAME}) & My Assistant ({ASSISTANT_NAME}) To Your Group!
-\u2022 Give Admin To Me (@{USERNAME}) & My Assistant ({ASSISTANT_NAME}) In Your Group!
+\u2022 Add Me ({@USERNAME}) & My Assistant (@{ASSISTANT_NAME}) To Your Group!
+\u2022 Give Admin To Me (@{USERNAME}) & My Assistant ({@ASSISTANT_NAME}) In Your Group!
 
 ⚔️-- **Available Commands**:--
 
