@@ -21,17 +21,17 @@ async def play(client, m: Message):
     chat_id = m.chat.id
     media = m.reply_to_message
     if not media and not ' ' in m.text:
-        await msg.edit("❗ __Send Me An Live Radio Link / YouTube Video Link / Reply To An Audio To Start Audio Streaming!__")
+        await msg.edit("❗ __SEND YOUTUBE LINK OR FILE REPLY /PLAY__")
 
     elif ' ' in m.text:
         text = m.text.split(' ', 1)
         query = text[1]
         if not 'http' in query:
-            return await msg.edit("❗ __Send Me An Live Stream Link / YouTube Video Link / Reply To An Video To Start Video Streaming!__")
+            return await msg.edit("❗ __SEND YOUTUBE LINK OR FILE REPLY /PLAY__")
         regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
         match = re.match(regex, query)
         if match:
-            await msg.edit("🔄 `Starting YouTube Audio Stream ...`")
+            await msg.edit("🔄 `STARTING YOUTUBE AUDIO STREAM ...`")
             try:
                 meta = ydl.extract_info(query, download=False)
                 formats = meta.get('formats', [meta])
@@ -39,11 +39,11 @@ async def play(client, m: Message):
                     ytstreamlink = f['url']
                 link = ytstreamlink
             except Exception as e:
-                return await msg.edit(f"❌ **YouTube Download Error !** \n\n`{e}`")
+                return await msg.edit(f"❌ **YOUTUBE DOWNLOAD ERROR !** \n\n`{e}`")
                 print(e)
 
         else:
-            await msg.edit("🔄 `Starting Live Audio Stream ...`")
+            await msg.edit("🔄 `STARTING LIVE AUDIO STREAM ...`")
             link = query
 
         vid_call = VIDEO_CALL.get(chat_id)
@@ -88,7 +88,7 @@ async def play(client, m: Message):
             return await group_call.stop()
 
     elif media.audio or media.document:
-        await msg.edit("🔄 `Downloading ...`")
+        await msg.edit("🔄 `DOWNLOADING ...`")
         audio = await client.download_media(media)
 
         vid_call = VIDEO_CALL.get(chat_id)
@@ -153,10 +153,10 @@ async def play(client, m: Message):
 @Client.on_message(filters.command(["restart", f"restart@{USERNAME}"]))
 @sudo_users_only
 async def restart(client, m: Message):
-    k = await m.reply_text("🔄 `Restarting ...`")
+    k = await m.reply_text("🔄 `RESTARTING ...`")
     await sleep(3)
     os.execl(sys.executable, sys.executable, *sys.argv)
     try:
-        await k.edit("✅ **Restarted Successfully! \nJoin @AsmSafone For More!**")
+        await k.edit("✅ **Restarted Successfully! \nJoin നോക്കി ഇരുന്നോ 🤣 For More!**")
     except:
         pass
